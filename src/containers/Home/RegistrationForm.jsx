@@ -56,7 +56,6 @@ function CustomPhoneComponent({ field, onChangeCountry, ...props }) {
 			variant="outlined"
 			inputClass={phoneClass}
 			disableAreaCodes={true}
-			style={{ width: '100%' }}
 			onChange={onChangeCountry}
 			inputProps={{ margin: 'dense', className: inputClass }}
 		/>
