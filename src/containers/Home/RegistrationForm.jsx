@@ -1,8 +1,8 @@
 import React from 'react';
-import { Grid, Button, TextField, FormHelperText, Typography } from '@material-ui/core/es';
+import { Grid, Button, TextField, FormHelperText, Typography, InputAdornment, IconButton } from '@material-ui/core/es';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useCss } from 'react-use';
+import { useCss, useBoolean } from 'react-use';
 
 import { unstable_Box as Box } from '@material-ui/core/Box/Box';
 
@@ -10,6 +10,7 @@ import Select from 'react-select';
 import MuiPhoneInput from 'material-ui-phone-number';
 
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 const SignupSchema = Yup.object().shape({
 	password: Yup.string()
@@ -85,6 +86,8 @@ function listDays() {
 }
 
 function FormFields(props) {
+	const [showPassword, setShowPassword] = useBoolean();
+
 	const {
 		// dirty, handleReset, handleSubmit,
 		setFieldValue,
@@ -118,15 +121,33 @@ function FormFields(props) {
 
 			<Grid container={true} spacing={16}>
 				<Grid md={6} item={true}>
-					<Field name="password" component={CustomInputComponent} placeholder="Password" />
+					<Field
+						name="password"
+						placeholder="Password"
+						component={CustomInputComponent}
+						type={showPassword ? 'text' : 'password'}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position="start">
+									<IconButton
+										aria-label="Toggle password visibility"
+										onClick={() => setShowPassword(!showPassword)}
+									>
+										{showPassword ? <Visibility /> : <VisibilityOff />}
+									</IconButton>
+								</InputAdornment>
+							)
+						}}
+					/>
 					<ErrorMessage name="password" component={FormHelperText} error={true} />
 				</Grid>
 
 				<Grid md={6} item={true}>
 					<Field
 						name="password_confirmation"
-						component={CustomInputComponent}
 						placeholder="Confirm password"
+						component={CustomInputComponent}
+						type={showPassword ? 'text' : 'password'}
 					/>
 					<ErrorMessage name="password_confirmation" component={FormHelperText} error={true} />
 				</Grid>
@@ -229,7 +250,7 @@ class RegistrationForm extends React.Component {
 				initialValues={this.initialValue}
 				validationSchema={SignupSchema}
 				onSubmit={this.handleSubmit}
-				children={FormFields}
+				children={props => <FormFields {...props} />}
 			/>
 		);
 	}

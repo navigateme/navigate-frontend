@@ -65,13 +65,7 @@ class LoginForm extends React.Component {
 					</Grid>
 					<Grid item md={2}>
 						<Box px="5px">
-							<Button
-								fullWidth
-								size="small"
-								color="secondary"
-								variant="contained"
-								style={{ textTransform: 'none' }}
-							>
+							<Button fullWidth size="small" color="secondary" variant="contained">
 								Sign in
 							</Button>
 						</Box>
