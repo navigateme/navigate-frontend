@@ -1,0 +1,21 @@
+{
+	"presets": ["@babel/preset-react", ["@babel/env", { "targets": { "browsers": ["last 2 versions"] }, "loose": true, "modules": false }]],
+	"plugins": [
+		"import-graphql",
+		["@babel/plugin-proposal-decorators", { "legacy": true }],
+		"@babel/plugin-proposal-class-properties",
+		"@babel/plugin-proposal-optional-chaining",
+		"@babel/plugin-syntax-dynamic-import",
+		"@babel/plugin-external-helpers",
+		"@babel/plugin-proposal-export-namespace-from",
+		[
+			"module-resolver",
+			{
+				"alias": {
+					"@bims-invoice": "./src/containers/invoice",
+					"@bims-packages": "./src/packages"
+				}
+			}
+		]
+	]
+}
