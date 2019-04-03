@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, IconButton, Toolbar, AppBar } from '@material-ui/core/es';
+import { Grid, Typography, IconButton, Toolbar, AppBar, Hidden } from '@material-ui/core/es';
 import { unstable_Box as Box } from '@material-ui/core/Box/Box';
 
 import MenuIcon from '@material-ui/icons/Menu';
@@ -38,9 +38,8 @@ class PrimarySearchAppBar extends React.Component {
 				<AppBar position="fixed" className={classes.navbar}>
 					<Toolbar>
 						<Grid container alignContent="center" alignItems="center" justify="space-between">
-							<Grid item>
-								<Box zIndex="modal" position="absolute" mt="-35px">
-									{/* <img
+							<Grid item md={3} sm={12}>
+								{/* <img
 										src={GreyLogo}
 										alt={
 											<Typography
@@ -50,21 +49,24 @@ class PrimarySearchAppBar extends React.Component {
 											</Typography>
 										}
 									/> */}
-									<Typography style={{ color: '#ffffff', fontSize: 40, fontWeight: 'bolder' }}>
-										Navigate
-									</Typography>
-								</Box>
+								<Typography style={{ color: '#ffffff', fontSize: 40, fontWeight: 'bolder' }}>
+									Navigate
+								</Typography>
 							</Grid>
-							<Grid item>
-								<Box width={600} px="10px">
+							<Grid item md={6} sm={12}>
+								<Box m="auto" style={{ maxWidth: '600px' }}>
 									<LoginForm />
 								</Box>
 							</Grid>
-							<Grid item>
-								<IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-									<MenuIcon />
-								</IconButton>
-							</Grid>
+							<Hidden smDown>
+								<Grid item md={3} sm={12}>
+									<Box textAlign="right">
+										<IconButton color="inherit">
+											<MenuIcon />
+										</IconButton>
+									</Box>
+								</Grid>
+							</Hidden>
 						</Grid>
 					</Toolbar>
 				</AppBar>

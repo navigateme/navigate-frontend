@@ -34,43 +34,46 @@ function Home(props) {
 			<Box className={bg}>
 				<Topbar />
 			</Box>
-			<Grid container justify="center" style={{ minHeight: '60vh' }}>
-				<Grid px="5px" width={600} item>
-					<Box pt="20px">
-						<RegistrationForm />
-					</Box>
+
+			<Box style={{ minHeight: '60vh' }}>
+				<Grid container justify="center">
+					<Grid px="5px" item>
+						<Box pt="20px">
+							<RegistrationForm />
+						</Box>
+					</Grid>
 				</Grid>
 
-				<br />
-				<br />
-				<Grid container={true} spacing={16} justify="space-around">
-					<Grid item={true}>
-						<a className={footLinks} href="/about">
-							About
-						</a>
-						<a className={footLinks} href="/post-ad">
-							Post Ad
-						</a>
-						<a className={footLinks} href="/apply">
-							Apply
-						</a>
-						<a className={footLinks} href="/careers">
-							Careers
-						</a>
-						<a className={footLinks} href="/privacy">
-							Privacy
-						</a>
-						<a className={footLinks} href="/help">
-							Help
-						</a>
+				<Box p="20px">
+					<Grid container={true} spacing={16} justify="space-around">
+						<Grid item={true}>
+							<a className={footLinks} href="/about">
+								About
+							</a>
+							<a className={footLinks} href="/post-ad">
+								Post Ad
+							</a>
+							<a className={footLinks} href="/apply">
+								Apply
+							</a>
+							<a className={footLinks} href="/careers">
+								Careers
+							</a>
+							<a className={footLinks} href="/privacy">
+								Privacy
+							</a>
+							<a className={footLinks} href="/help">
+								Help
+							</a>
+						</Grid>
+						<Grid item={true}>
+							<a className={footLinks} href="/help">
+								2019 English (US)
+							</a>
+						</Grid>
 					</Grid>
-					<Grid item={true}>
-						<a className={footLinks} href="/help">
-							2019 English (US)
-						</a>
-					</Grid>
-				</Grid>
-			</Grid>
+				</Box>
+			</Box>
 		</Box>
 	);
 }
